@@ -1,0 +1,14 @@
+.home {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.home-container {
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(209, 209, 209);
+}

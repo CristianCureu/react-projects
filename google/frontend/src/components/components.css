@@ -1,0 +1,63 @@
+.topbar {
+    width: 100%;
+    height: 10vh;
+    padding: .5rem;
+    background-color: rgb(230, 230, 230);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+.topbar-input { 
+    width: 85%;
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    
+}
+
+.topbar-input input {
+    width: 100%; 
+    height: 100%;
+    border-radius: 3rem;
+    padding: 1rem 3rem;
+    background-color: rgb(210, 210, 210);
+    color: rgb(50, 50, 50);
+    font-size: 1rem;
+    outline: none;  
+    border: none;
+    transition: all .5s ease;
+}
+.topbar-input input:hover {
+    background-color: rgb(195, 192, 192);
+}
+.topbar-input input:focus {
+    border: 3px solid rgb(65, 143, 231);
+    background-color: white;
+    transition: all 0s;
+}
+
+.topbar-input-buttons {
+    position: absolute;
+    right: 0;
+}
+.topbar-left-buttons {
+    display: flex;
+}
+.topbar-right-buttons {
+    display: flex;
+}
+.topbar-info-button {
+    position: absolute;
+    left: 0;
+}
+
+.shortcuts {
+    width: 60%;
+    height: 40vh;
+    display: grid;
+    border: 1px solid black;
+}

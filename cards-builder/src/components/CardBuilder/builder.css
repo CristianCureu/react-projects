@@ -1,0 +1,25 @@
+.formBuilder {
+  height: 60vh;
+  width: 40vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid white;
+}
+.formBuilder input {
+  color: white;
+}
+.strings {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid white;
+  height: 40%;
+  flex-direction: column;
+  color: white;
+}
+.bars {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  flex-direction: column;
+}

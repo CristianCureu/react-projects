@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const config = require("./config");
 
-// const VendorRouter = require("./Routers/Vendor");
 const ShortcutRouter = require("./Routes/ShortcutRoutes");
 
 const app = express();

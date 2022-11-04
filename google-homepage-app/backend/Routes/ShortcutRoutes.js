@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const shortcuts = require("../Controllers/ShortcutControllers")
+const shortcuts = require("../Controllers/ShortcutControllers");
 
 router.get("/", shortcuts.list);
 router.get("/:id", shortcuts.listById);

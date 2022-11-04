@@ -1,9 +1,12 @@
-import "./components.css"
+import "./components.css";
+import Shortcut from "./Shortcut";
 
 function Shortcuts() {
   return (
-    <div className="shortcuts">Shortcuts</div>
-  )
+    <div className="shortcuts">
+      <Shortcut />
+    </div>
+  );
 }
 
-export default Shortcuts
+export default Shortcuts;

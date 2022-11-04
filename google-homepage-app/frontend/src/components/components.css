@@ -1,63 +1,116 @@
 .topbar {
-    width: 100%;
-    height: 10vh;
-    padding: .5rem;
-    background-color: rgb(230, 230, 230);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  height: 10vh;
+  padding: 0.5rem;
+  background-color: rgb(230, 230, 230);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-
-
-.topbar-input { 
-    width: 85%;
-    height: 4vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    
+.topbar-input {
+  width: 85%;
+  height: 4vh;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 .topbar-input input {
-    width: 100%; 
-    height: 100%;
-    border-radius: 3rem;
-    padding: 1rem 3rem;
-    background-color: rgb(210, 210, 210);
-    color: rgb(50, 50, 50);
-    font-size: 1rem;
-    outline: none;  
-    border: none;
-    transition: all .5s ease;
+  width: 100%;
+  height: 100%;
+  border-radius: 3rem;
+  padding: 1rem 3rem;
+  background-color: rgb(210, 210, 210);
+  color: rgb(50, 50, 50);
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  transition: all 0.5s ease;
 }
 .topbar-input input:hover {
-    background-color: rgb(195, 192, 192);
+  background-color: rgb(195, 192, 192);
 }
 .topbar-input input:focus {
-    border: 3px solid rgb(65, 143, 231);
-    background-color: white;
-    transition: all 0s;
+  border: 3px solid rgb(65, 143, 231);
+  background-color: white;
+  transition: all 0s;
 }
 
 .topbar-input-buttons {
-    position: absolute;
-    right: 0;
+  position: absolute;
+  right: 0;
 }
 .topbar-left-buttons {
-    display: flex;
+  display: flex;
 }
 .topbar-right-buttons {
-    display: flex;
+  display: flex;
 }
 .topbar-info-button {
-    position: absolute;
-    left: 0;
+  position: absolute;
+  left: 0;
+}
+
+.center-input {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-radius: 3rem;
+  padding: 0.5rem 1rem;
+  background-color: white;
+  margin: 2rem;
+}
+
+.center-input input {
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
 }
 
 .shortcuts {
-    width: 60%;
-    height: 40vh;
-    display: grid;
-    border: 1px solid black;
+  width: 50%;
+  height: 40vh;
+  display: flex;
+  border: 1px solid black;
+}
+
+.shortcut {
+  width: 16vh;
+  max-height: 18vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.shortcut:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.shortcut .icon {
+  width: 8vh;
+  height: 8vh;
+  border-radius: 50%;
+  background-color: rgb(55, 55, 55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shortcut .title {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  width: 90%;
+  font-size: .8rem;
+  letter-spacing: .3px;
 }

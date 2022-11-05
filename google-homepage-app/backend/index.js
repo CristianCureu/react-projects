@@ -1,11 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const config = require("./config");
-
+const cors = require("cors");
 const ShortcutRouter = require("./Routes/ShortcutRoutes");
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use("/shortcut", ShortcutRouter);
 

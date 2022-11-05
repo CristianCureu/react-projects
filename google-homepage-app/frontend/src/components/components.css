@@ -73,10 +73,10 @@
 }
 
 .shortcuts {
-  width: 50%;
+  width: 40%;
   height: 40vh;
   display: flex;
-  border: 1px solid black;
+  justify-content: center;
 }
 
 .shortcut {
@@ -111,6 +111,29 @@
   border-radius: 1rem;
   padding: 0.5rem;
   width: 90%;
-  font-size: .8rem;
-  letter-spacing: .3px;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+}
+
+.shortcut-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 70%;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.shortcut-modal input,
+.shortcut-modal label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.shortcut-buttons {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 1rem;
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
 }

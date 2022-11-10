@@ -1,10 +1,22 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import AddShortcut from "./AddShortcut";
+import { createShortcut } from "../requests";
 import "./components.css";
 import Shortcut from "./Shortcut";
 
 function Shortcuts() {
   const [shortcuts, setShortcuts] = useState([]);
+
+  const addShortcut = async (newShortcut) => {
+    const oldShortcuts = [...shortcuts];
+    try {
+      const resData = await createShortcut(newShortcut);
+      oldShortcuts.push(resData);
+      setShortcuts(oldShortcuts);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -17,20 +29,15 @@ function Shortcuts() {
       }
     };
     getData();
-    console.log("...")
   }, []);
 
   return (
     <div className="shortcuts">
-      {shortcuts.length &&
-        shortcuts.map((shortcut, index) => (
-          <Shortcut
-            key={index}
-            name={shortcut.name}
-            url={shortcut.url}
-          />
+      {shortcuts &&
+        shortcuts.map((shortcut) => (
+          <Shortcut key={shortcut._id} name={shortcut.name} />
         ))}
-      <Shortcut />
+      <AddShortcut addShortcut={addShortcut} />
     </div>
   );
 }

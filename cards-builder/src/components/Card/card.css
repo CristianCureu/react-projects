@@ -31,10 +31,6 @@
 .label {
   color: rgb(169, 169, 169);
 }
-.button {
-  position: absolute;
-  bottom: 0;
-}
 .features {
   display: flex;
   flex-direction: column;

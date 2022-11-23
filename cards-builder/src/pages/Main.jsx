@@ -1,11 +1,12 @@
-import { ToggleButton } from "@mui/material";
 import Card from "../components/Card/Card";
+import "./pages.css";
 
 function Main() {
-  return <div cclassName="App">
-    <ToggleButton />
-    <Card />    
-  </div>;
+  return (
+    <div className="main">
+      <Card />
+    </div>
+  );
 }
 
 export default Main;

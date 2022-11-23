@@ -3,12 +3,15 @@ import Builder from "./pages/Builder";
 import Main from "./pages/Main";
 
 function Router() {
-  <BrowserRouter>
+  return (
+    <BrowserRouter>
     <Routes>
-      <Route exact path="/" element={<Main />} />
+      <Route path="/" element={<Main />} />
       <Route path="/builder" element={<Builder />} />
     </Routes>
-  </BrowserRouter>;
+  </BrowserRouter>
+  )
+
 }
 
 export default Router;

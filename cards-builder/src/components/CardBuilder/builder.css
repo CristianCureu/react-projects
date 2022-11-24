@@ -1,9 +1,10 @@
 .formBuilder {
   height: 80vh;
-  min-width: 60vw;
+  width: 60vw;
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
-  position: relative;
+  align-items: center;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.6) 0 0 30px;
 }
@@ -21,13 +22,15 @@
   flex-direction: column;
   color: white;
 }
-.bars-right, .bars-left {
+.fields {
+  width: 90%;
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   height: 85%;
-  flex-direction: column;
+  padding: 1rem;
 }
 .submit {
-  position: absolute;
-  bottom: 1.5rem;
+  margin-bottom: 1rem;
 }

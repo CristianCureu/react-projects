@@ -1,91 +1,90 @@
 import "./builder.css";
-import { useState } from "react";
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import { useEffect, useState } from "react";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const arrayStats = [
+  "position",
+  "pace",
+  "shooting",
+  "passing",
+  "dribbling",
+  "defending",
+  "physical",
+  "skillMoves",
+  "weakFoot",
+  "foot",
+  "photoUrl",
+];
 
 function CardBuilder() {
-  const [stats, setStats] = useState({
-    position: "",
-    pace: 0,
-    shooting: 0,
-    passing: 0,
-    dribbling: 0,
-    defending: 0,
-    physical: 0,
-    skillMoves: 0,
-    weakFoot: 0,
-    foot: "",
-  });
+  const [stats, setStats] = useState({});
 
-  const submitHandler = (e) => {
+  const onChangeHandler = (label, e) => {
+    setStats({ ...stats, [label]: e.target.value.toUpperCase() });
+  };
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-  }
+    try {
+      if (Object.keys(stats).length === arrayStats.length) {
+        await fetch("https://637f53c72f8f56e28e8829ca.mockapi.io/cards", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(stats),
+        });
+        toast.success("Card successfully created!", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+        setStats({});
+        e.target.reset();
+      } else {
+        toast.error("All fields are mandatory!", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      }
+    } catch (err) {
+      toast.error(err.message, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+    }
+  };
+
+  useEffect(() => {
+    console.log(stats);
+  }, [stats]);
 
   return (
     <form className="formBuilder" onSubmit={submitHandler}>
-      <div className="bars-left">
-        <TextField
-          variant="filled"
-          label="position"
-          onChange={(e) => setStats({ ...stats, position: e.target.value })}
-        />
-        <TextField
-          variant="filled"
-          label="foot"
-          onChange={(e) => setStats({ ...stats, foot: e.target.value })}
-        />
-        <TextField
-          variant="filled"
-          type="number"
-          label="pace"
-          onChange={(e) => setStats({ ...stats, pace: e.target.value })}
-        />
-        <TextField
-          variant="filled"
-          type="number"
-          label="shooting"
-          onChange={(e) => setStats({ ...stats, shooting: e.target.value })}
-        />
-        <TextField
-          variant="filled"
-          type="number"
-          label="passing"
-          onChange={(e) => setStats({ ...stats, passing: e.target.value })}
-        />
+      <div className="fields">
+        {Array(arrayStats.length)
+          .fill(true)
+          .map((_, i) => (
+            <TextField
+              key={i}
+              variant="filled"
+              label={arrayStats[i]}
+              type={
+                arrayStats[i] === "position" ||
+                arrayStats[i] === "foot" ||
+                arrayStats[i] === "photoUrl"
+                  ? "text"
+                  : "number"
+              }
+              onChange={(e) => onChangeHandler(arrayStats[i], e)}
+            />
+          ))}
       </div>
-      <div className="bars-right">
-        <TextField
-          variant="filled"
-          type="number"
-          label="dribbling"
-          onChange={(e) => setStats({ ...stats, dribbling: e.target.value })}
-        />
-        <TextField
-          variant="filled"
-          type="number"
-          label="defending"
-          onChange={(e) => setStats({ ...stats, defending: e.target.value })}
-        />
-        <TextField
-          variant="filled"
-          type="number"
-          label="physical"
-          onChange={(e) => setStats({ ...stats, physical: e.target.value })}
-        />
-        <TextField
-          variant="filled"
-          type="number"
-          label="skillMoves"
-          onChange={(e) => setStats({ ...stats, skillMoves: e.target.value })}
-        />
-        <TextField
-          variant="filled"
-          type="number"
-          label="weakFoot"
-          onChange={(e) => setStats({ ...stats, weakFoot: e.target.value })}
-        />
+      <div className="submit">
+        <Button variant="outlined" type="submit">
+          Create card
+        </Button>
       </div>
-      <Button variant="outlined" className="submit">Create card</Button>
+      <ToastContainer />
     </form>
   );
 }

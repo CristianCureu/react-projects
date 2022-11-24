@@ -1,0 +1,12 @@
+.toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 2rem;
+  margin-right: 4rem;
+}
+
+.toggle a {
+  text-decoration: none;
+  color: rgb(253, 242, 255);
+}

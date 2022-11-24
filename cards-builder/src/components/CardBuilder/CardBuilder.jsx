@@ -54,10 +54,6 @@ function CardBuilder() {
     }
   };
 
-  useEffect(() => {
-    console.log(stats);
-  }, [stats]);
-
   return (
     <form className="formBuilder" onSubmit={submitHandler}>
       <div className="fields">

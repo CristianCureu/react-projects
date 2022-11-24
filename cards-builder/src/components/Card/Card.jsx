@@ -2,11 +2,27 @@ import "./card.css";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import LinearProgress from "@mui/material/LinearProgress";
+import Rating from "@mui/material/Rating";
 
-function Card() {
+function Card({ stats }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [paceValue, setPaceValue] = useState(0);
 
+  const checkStatus = (key, value) => {
+    if (key === "skillMoves" || key === "weakFoot") {
+      return <Rating name="read-only" value={value} readOnly />;
+    } else if (key === "position" || key === "foot") {
+      return value;
+    } else {
+      return (
+        <LinearProgress
+          value={value}
+          variant="determinate"
+          color="secondary"
+          sx={{ width: "8rem", height: ".8rem" }}
+        />
+      );
+    }
+  };
   //layout by default animates the size of it and the position of it
   return (
     <motion.div
@@ -35,84 +51,12 @@ function Card() {
         >
           <div className="features">
             <h2 className="title">Player stats</h2>
-            <motion.div>
-              <div className="label">Position</div>
-            </motion.div>
-            <motion.div>
-              <div className="label">Pace</div>
-              <LinearProgress
-                value={paceValue}
-                variant="determinate"
-                color="secondary"
-                sx={{ width: "8rem", height: ".8rem" }}
-              />
-            </motion.div>
-            <motion.div>
-              <div className="label">Shooting</div>
-              <LinearProgress
-                value={10}
-                variant="determinate"
-                color="secondary"
-                sx={{ width: "8rem", height: ".8rem" }}
-              />
-            </motion.div>
-            <motion.div>
-              <div className="label">Passing</div>
-              <LinearProgress
-                value={10}
-                variant="determinate"
-                color="secondary"
-                sx={{ width: "8rem", height: ".8rem" }}
-              />
-            </motion.div>
-            <motion.div>
-              <div className="label">Dribbling</div>
-              <LinearProgress
-                value={10}
-                variant="determinate"
-                color="secondary"
-                sx={{ width: "8rem", height: ".8rem" }}
-              />
-            </motion.div>
-            <motion.div>
-              <div className="label">Defending</div>
-              <LinearProgress
-                value={10}
-                variant="determinate"
-                color="secondary"
-                sx={{ width: "8rem", height: ".8rem" }}
-              />
-            </motion.div>
-            <motion.div>
-              <div className="label">Physical</div>
-              <LinearProgress
-                value={10}
-                variant="determinate"
-                color="secondary"
-                sx={{ width: "8rem", height: ".8rem" }}
-              />
-            </motion.div>
-            <motion.div>
-              <div className="label">Skill moves</div>
-              <LinearProgress
-                value={10}
-                variant="determinate"
-                color="secondary"
-                sx={{ width: "8rem", height: ".8rem" }}
-              />
-            </motion.div>
-            <motion.div>
-              <div className="label">Weak foot</div>
-              <LinearProgress
-                value={10}
-                variant="determinate"
-                color="secondary"
-                sx={{ width: "8rem", height: ".8rem" }}
-              />
-            </motion.div>
-            <motion.div>
-              <div className="label">Foot</div>
-            </motion.div>
+            {stats.map((status, index) => (
+              <motion.div key={index}>
+                <div className="label">{status[0]}</div>
+                {checkStatus(status[0], status[1])}
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       )}

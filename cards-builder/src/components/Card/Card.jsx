@@ -1,29 +1,23 @@
 import "./card.css";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LinearProgress from "@mui/material/LinearProgress";
 import Rating from "@mui/material/Rating";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
 function Card({ stats }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const checkStatus = (key, value) => {
     if (key === "skillMoves" || key === "weakFoot") {
-      return <Rating name="read-only" value={value} readOnly />;
+      return <Rating name="read-only" value={parseInt(value)} readOnly />;
     } else if (key === "position" || key === "foot") {
       return value;
     } else {
-      return (
-        <LinearProgress
-          value={value}
-          variant="determinate"
-          color="secondary"
-          sx={{ width: "8rem", height: ".8rem" }}
-        />
-      );
+      return <ProgressBar completed={value} />;
     }
   };
-  //layout by default animates the size of it and the position of it
+
   return (
     <motion.div
       transition={{ layout: { duration: 0.7, type: "tween" } }}

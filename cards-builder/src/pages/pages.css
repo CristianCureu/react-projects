@@ -12,3 +12,7 @@
     align-items: center;
     justify-content: center;
 }
+
+.main {
+  justify-content: space-evenly;
+}

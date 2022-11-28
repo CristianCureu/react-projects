@@ -23,7 +23,7 @@ function CardBuilder() {
   const [stats, setStats] = useState({});
 
   const onChangeHandler = (label, e) => {
-    setStats({ ...stats, [label]: e.target.value.toUpperCase() });
+    setStats({ ...stats, [label]: e.target.value });
   };
 
   const submitHandler = async (e) => {

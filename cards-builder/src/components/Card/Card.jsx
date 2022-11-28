@@ -1,12 +1,14 @@
 import "./card.css";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import LinearProgress from "@mui/material/LinearProgress";
+import { useState } from "react";
 import Rating from "@mui/material/Rating";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-function Card({ stats }) {
+function Card({ stats, deleteCard, id, url }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   const checkStatus = (key, value) => {
     if (key === "skillMoves" || key === "weakFoot") {
@@ -24,6 +26,8 @@ function Card({ stats }) {
       layout
       className={isOpen ? "card opened" : "card"}
       onClick={() => setIsOpen(!isOpen)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       style={{
         borderRadius: "8px",
         boxShadow: "0px 0px 30px rgba(0, 0, 0, 0.7)",
@@ -34,7 +38,16 @@ function Card({ stats }) {
         layout
         className="image"
       >
-        <img style={{ borderRadius: "8px" }} src="images/me.jpg" alt="me" />
+        <img
+          style={{ borderRadius: "8px" }}
+          src={url}
+          alt="player"
+        />
+        <div className={hovered ? "delete" : "none delete"}>
+          <IconButton onClick={() => deleteCard(id)}>
+            <DeleteIcon />
+          </IconButton>
+        </div>
       </motion.div>
       {isOpen && (
         <motion.div
@@ -47,8 +60,10 @@ function Card({ stats }) {
             <h2 className="title">Player stats</h2>
             {stats.map((status, index) => (
               <motion.div key={index}>
-                <div className="label">{status[0]}</div>
-                {checkStatus(status[0], status[1])}
+                {status[0] !== "photoUrl" && (
+                  <div className="label">{status[0]}</div>
+                )}
+                {status[0] !== "photoUrl" && checkStatus(status[0], status[1])}
               </motion.div>
             ))}
           </div>
